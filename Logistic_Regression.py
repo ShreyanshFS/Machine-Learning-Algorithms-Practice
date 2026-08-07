@@ -8,7 +8,6 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
-
 df=sns.load_dataset('iris')
 print(df.head())
 
