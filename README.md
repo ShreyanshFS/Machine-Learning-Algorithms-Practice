@@ -41,6 +41,20 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 
 ---
 
+## 🧠 Model Breakdown: Naive Bayes Classifier (`Naive_Bay's.py`)
+
+**Naive Bayes** is a probabilistic classification algorithm based on Bayes' Theorem with the "naive" assumption of conditional independence between features given the class label.
+
+### Key Concepts & Workflow:
+- **Bayes' Theorem**: 
+  $$P(y \mid X) = \frac{P(X \mid y) \cdot P(y)}{P(X)}$$
+- **Gaussian Naive Bayes (`GaussianNB`)**: Assumes continuous features follow a Gaussian (normal) distribution.
+- **Preprocessing & Standardization**: Data features are standardized using `StandardScaler` prior to training.
+- **Cross-Validation**: 10-fold cross-validation (`cross_val_score`) is applied to assess model generalization.
+- **Evaluation**: Accuracy score, classification report, and residual KDE plot are generated to analyze predictions against true labels.
+
+---
+
 ## 🚀 Quick Start
 
 ### 1. Prerequisites
