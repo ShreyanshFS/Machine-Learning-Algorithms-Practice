@@ -22,7 +22,7 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 ├── Lasso_Regression.py        # Lasso Regression (L1 Regularization) for feature selection
 ├── ElasticNet_Regression.py   # ElasticNet (Combined L1 + L2 Regularization)
 ├── Logistic_Regression.py    # Logistic Regression classification (Iris dataset) with GridSearch
-├── Naive_Bay's.py             # Naive Bayes Classifier implementation (In Progress / Upcoming)
+├── Naive_Bay's.py             # Naive Bayes Classifier implementation (GaussianNB on Iris dataset)
 └── residual_distribution.png  # Sample visualization of model residual distribution
 ```
 
@@ -36,8 +36,8 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 | **Ridge Regression** | Regression | California Housing | L2 Penalty, `GridSearchCV` (`alpha` tuning), Residual Analysis |
 | **Lasso Regression** | Regression | California Housing | L1 Penalty, `GridSearchCV` hyperparameter search |
 | **ElasticNet** | Regression | California Housing | Combined L1/L2 Penalties, `GridSearchCV` parameter grid |
-| **Logistic Regression** | Classification | Iris Dataset (Binary) | `saga` Solver, L1/L2/ElasticNet penalties, `GridSearchCV` |
-| **Naive Bayes** | Classification | *Work in Progress* | *(Coming Soon)* |
+| **Logistic Regression** | Classification | Iris Dataset | `saga` Solver, L1/L2/ElasticNet penalties, `GridSearchCV` |
+| **Naive Bayes** | Classification | Iris Dataset | `GaussianNB`, `StandardScaler`, `cross_val_score`, Accuracy Score |
 
 ---
 
@@ -50,7 +50,7 @@ Ensure you have **Python 3.8+** installed.
 Clone the repository and set up a virtual environment:
 
 ```bash
-git clone https://github.com/your-username/Machine-Learning-Algorithms-Practice.git
+git clone https://github.com/ShreyanshFS/Machine-Learning-Algorithms-Practice.git
 cd Machine-Learning-Algorithms-Practice
 
 # Create virtual environment (optional but recommended)
@@ -71,6 +71,7 @@ Execute any script directly via python:
 ```bash
 python Linear_Regression.py
 python Logistic_Regression.py
+python "Naive_Bay's.py"
 ```
 
 ---
@@ -90,7 +91,7 @@ sns.displot(pred - y_test, kind="kde")
 
 - [x] Supervised Learning: Linear & Regularized Regressions (Ridge, Lasso, ElasticNet)
 - [x] Supervised Learning: Logistic Regression with hyperparameter tuning
-- [ ] Naive Bayes Classification
+- [x] Supervised Learning: Naive Bayes Classification (`GaussianNB`)
 - [ ] Decision Trees & Random Forests
 - [ ] Support Vector Machines (SVM)
 - [ ] Clustering Algorithms (K-Means, DBSCAN)
