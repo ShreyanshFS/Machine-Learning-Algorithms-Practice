@@ -9,7 +9,7 @@ dataset=pd.DataFrame(df.data)
 dataset.columns=df.feature_names
 print("Dataset:\n",dataset.head())
 
-#independent Feature 
+#Independent Feature 
 x=dataset 
 
 #Dependent Feature 
@@ -26,7 +26,7 @@ sc= StandardScaler()
 x_train=sc.fit_transform(x_train)
 x_test=sc.transform(x_test)
 
-#model calling
+#Model calling
 from sklearn.svm import SVC
 svc=SVC()
 
@@ -56,5 +56,4 @@ sns.displot(p-y_test,kind='kde')
 plt.xlabel("Residual")
 plt.title("Residual Distribution")
 plt.show()
-
 
