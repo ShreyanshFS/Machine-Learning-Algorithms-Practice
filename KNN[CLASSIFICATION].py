@@ -41,6 +41,7 @@ print (z)
 pred=knn.predict(x_test)
 print('predection\n',pred)
 
+#evalution
 from sklearn.metrics import classification_report
 print(classification_report(y_test, pred))
 from sklearn.metrics import accuracy_score,classification_report
