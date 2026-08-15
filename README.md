@@ -1,5 +1,12 @@
 # 🤖 Machine Learning Implementation & Dev Journey
 
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=flat&logo=numpy&logoColor=white)
+![Repo Stars](https://img.shields.io/github/stars/ShreyanshFS/Machine-Learning-Algorithms-Practice?style=social)
+
 Welcome to my Machine Learning repository! This repository serves as a hands-on digital footprint of my developer journey in Machine Learning and Data Science. Here, I write clean, practical Python implementations of foundational ML algorithms, complete with data preprocessing, hyperparameter tuning, model evaluation, and visualization.
 
 ---
@@ -7,8 +14,8 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 ## 📌 Features & Key Learning Objectives
 
 - **From-Scratch & Scikit-Learn Workflows**: Practical pipelines covering data loading, feature scaling, model fitting, and evaluation.
-- **Cross-Validation & Hyperparameter Tuning**: Using `GridSearchCV` and `cross_val_score` to optimize model performance.
-- **Data Visualization**: Analyzing residual distributions (`KDE` plots) and feature relationships with `Seaborn` and `Matplotlib`.
+- **Cross-Validation & Hyperparameter Tuning**: Using `GridSearchCV` and `cross_val_score` to evaluate and optimize model performance.
+- **Data Visualization**: Analyzing residual distributions (`KDE` plots), feature relationships, and confusion matrices with `Seaborn` and `Matplotlib`.
 - **Standard Preprocessing**: Consistent feature standardization using `StandardScaler` and train-test splits.
 
 ---
@@ -23,14 +30,19 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 ├── ElasticNet_Regression.py   # ElasticNet (Combined L1 + L2 Regularization)
 ├── Logistic_Regression.py    # Logistic Regression classification (Iris dataset) with GridSearch
 ├── Naive_Bay's.py             # Naive Bayes Classifier implementation (GaussianNB on Iris dataset)
-└── residual_distribution.png  # Sample visualization of model residual distribution
+├── KNN[CLASSIFICATION].py     # K-Nearest Neighbors Classification (Iris dataset)
+├── KNN[Regression].py         # K-Nearest Neighbors Regression (California Housing dataset)
+├── SVC.PY                     # Support Vector Classifier (Breast Cancer dataset)
+├── SVR.PY                     # Support Vector Regressor (California Housing dataset)
+├── residual_distribution.png  # Sample visualization of model residual distribution
+└── requirements.txt           # Python dependencies list
 ```
 
 ---
 
 ## 📊 Summary of Implemented Models
 
-| Algorithm | Model Type | Dataset / Problem | Techniques Used |
+| Algorithm | Model Type | Dataset / Problem | Key Techniques & Metrics |
 | :--- | :--- | :--- | :--- |
 | **Linear Regression** | Regression | California Housing | OLS, `StandardScaler`, `cross_val_score`, R² Evaluation |
 | **Ridge Regression** | Regression | California Housing | L2 Penalty, `GridSearchCV` (`alpha` tuning), Residual Analysis |
@@ -38,27 +50,35 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 | **ElasticNet** | Regression | California Housing | Combined L1/L2 Penalties, `GridSearchCV` parameter grid |
 | **Logistic Regression** | Classification | Iris Dataset | `saga` Solver, L1/L2/ElasticNet penalties, `GridSearchCV` |
 | **Naive Bayes** | Classification | Iris Dataset | `GaussianNB`, `StandardScaler`, `cross_val_score`, Accuracy Score |
+| **KNN Classifier** | Classification | Iris Dataset | `KNeighborsClassifier`, `StandardScaler`, 10-fold CV, Confusion Matrix |
+| **KNN Regressor** | Regression | California Housing | `KNeighborsRegressor`, `StandardScaler`, 10-fold CV, R² & MSE Evaluation |
+| **Support Vector Classifier (SVC)** | Classification | Breast Cancer Dataset | `SVC`, `StandardScaler`, 10-fold CV, Confusion Matrix & Classification Report |
+| **Support Vector Regressor (SVR)** | Regression | California Housing | `SVR`, `StandardScaler`, 10-fold CV (R² scoring), MAE, MSE, R² Evaluation |
 
 ---
 
-## 🧠 Model Breakdown: Naive Bayes Classifier (`Naive_Bay's.py`)
+## 🧠 Model Breakdown Highlights
 
-**Naive Bayes** is a probabilistic classification algorithm based on Bayes' Theorem with the "naive" assumption of conditional independence between features given the class label.
+### 1. Naive Bayes Classifier (`Naive_Bay's.py`)
+- **Concept**: Probabilistic classifier based on Bayes' Theorem assuming feature independence.
+- **Workflow**: `StandardScaler` preprocessing, 10-fold cross-validation, accuracy report, and KDE residual distribution analysis.
 
-### Key Concepts & Workflow:
-- **Bayes' Theorem**: 
-  $$P(y \mid X) = \frac{P(X \mid y) \cdot P(y)}{P(X)}$$
-- **Gaussian Naive Bayes (`GaussianNB`)**: Assumes continuous features follow a Gaussian (normal) distribution.
-- **Preprocessing & Standardization**: Data features are standardized using `StandardScaler` prior to training.
-- **Cross-Validation**: 10-fold cross-validation (`cross_val_score`) is applied to assess model generalization.
-- **Evaluation**: Accuracy score, classification report, and residual KDE plot are generated to analyze predictions against true labels.
+### 2. K-Nearest Neighbors (`KNN[CLASSIFICATION].py` & `KNN[Regression].py`)
+- **Concept**: Distance-based non-parametric algorithm classifying or predicting values based on $k$ nearest data points.
+- **Workflow**: Feature scaling via `StandardScaler`, 10-fold CV, evaluation via accuracy / R² & MSE, and confusion matrix visualization.
+
+### 3. Support Vector Machines (`SVC.PY` & `SVR.PY`)
+- **Concept**: Finds optimal hyperplanes to separate classes (SVC) or fit data within an $\epsilon$-margin (SVR).
+- **Workflow**: Feature standardization, 10-fold CV scoring, classification metrics (accuracy, confusion matrix) & regression metrics (MAE, MSE, $R^2$), and residual KDE plots.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start & Installation
 
 ### 1. Prerequisites
-Ensure you have **Python 3.8+** installed.
+- **Python 3.8 or higher**
+- **Git**
+- **pip** package manager
 
 ### 2. Installation & Environment Setup
 Clone the repository and set up a virtual environment:
@@ -67,17 +87,20 @@ Clone the repository and set up a virtual environment:
 git clone https://github.com/ShreyanshFS/Machine-Learning-Algorithms-Practice.git
 cd Machine-Learning-Algorithms-Practice
 
-# Create virtual environment (optional but recommended)
+# Create virtual environment
 python -m venv venv
-# Activate on Windows:
+
+# Activate virtual environment
+# On Windows:
 venv\Scripts\activate
-# Activate on macOS/Linux:
+# On macOS/Linux:
 source venv/bin/activate
 ```
 
-### 3. Install Required Libraries
+### 3. Install Dependencies
+Install all required libraries using `requirements.txt`:
 ```bash
-pip install numpy pandas scikit-learn matplotlib seaborn
+pip install -r requirements.txt
 ```
 
 ### 4. Running an Implementation
@@ -86,13 +109,17 @@ Execute any script directly via python:
 python Linear_Regression.py
 python Logistic_Regression.py
 python "Naive_Bay's.py"
+python "KNN[CLASSIFICATION].py"
+python "KNN[Regression].py"
+python SVC.PY
+python SVR.PY
 ```
 
 ---
 
 ## 📈 Visualizing Residuals & Performance
 
-Model performance is evaluated using metrics like **R² score** for regression and **Accuracy / Classification Report** for classification. The scripts generate residual distribution plots (`KDE` plots) to assess error distribution:
+Model performance is evaluated using metrics like **R² score**, **MSE**, and **MAE** for regression, and **Accuracy / Classification Report / Confusion Matrix** for classification. The scripts generate residual distribution plots (`KDE` plots) to assess error distribution:
 
 ```python
 import seaborn as sns
@@ -106,10 +133,18 @@ sns.displot(pred - y_test, kind="kde")
 - [x] Supervised Learning: Linear & Regularized Regressions (Ridge, Lasso, ElasticNet)
 - [x] Supervised Learning: Logistic Regression with hyperparameter tuning
 - [x] Supervised Learning: Naive Bayes Classification (`GaussianNB`)
+- [x] Supervised Learning: K-Nearest Neighbors (KNN Classification & Regression)
+- [x] Supervised Learning: Support Vector Machines (`SVC` & `SVR`)
 - [ ] Decision Trees & Random Forests
-- [ ] Support Vector Machines (SVM)
+- [ ] Ensemble Learning (Random Forests, Gradient Boosting, XGBoost)
 - [ ] Clustering Algorithms (K-Means, DBSCAN)
 - [ ] Deep Learning Foundations (Neural Networks with PyTorch/TensorFlow)
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this software for educational and personal projects.
 
 ---
 
