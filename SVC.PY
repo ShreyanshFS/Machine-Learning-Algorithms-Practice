@@ -53,5 +53,8 @@ plt.show()
 #Graph Plotting
 import seaborn as sns
 sns.displot(p-y_test,kind='kde')
+plt.xlabel("Residual")
+plt.title("Residual Distribution")
 plt.show()
+
 
