@@ -28,7 +28,7 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 ├── Rigde_Regression.py        # Ridge Regression (L2 Regularization) with GridSearchCV
 ├── Lasso_Regression.py        # Lasso Regression (L1 Regularization) for feature selection
 ├── ElasticNet_Regression.py   # ElasticNet (Combined L1 + L2 Regularization)
-├── Logistic_Regression.py    # Logistic Regression classification (Iris dataset) with GridSearch
+├── Logistic_Regression.py     # Logistic Regression classification (Iris dataset) with GridSearch
 ├── Naive_Bay's.py             # Naive Bayes Classifier implementation (GaussianNB on Iris dataset)
 ├── KNN[CLASSIFICATION].py     # K-Nearest Neighbors Classification (Iris dataset)
 ├── KNN[Regression].py         # K-Nearest Neighbors Regression (California Housing dataset)
@@ -59,17 +59,21 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 
 ## 🧠 Model Breakdown Highlights
 
-### 1. Naive Bayes Classifier (`Naive_Bay's.py`)
-- **Concept**: Probabilistic classifier based on Bayes' Theorem assuming feature independence.
-- **Workflow**: `StandardScaler` preprocessing, 10-fold cross-validation, accuracy report, and KDE residual distribution analysis.
+### 1. Regression Models (Linear, Ridge, Lasso, ElasticNet)
+- **Concept**: Predicting continuous target values using linear relationships and various regularization techniques (L1/L2 penalties) to prevent overfitting.
+- **Workflow**: `StandardScaler`, `GridSearchCV` for tuning `alpha`, evaluation via R² and MSE, and KDE residual distribution plots.
 
-### 2. K-Nearest Neighbors (`KNN[CLASSIFICATION].py` & `KNN[Regression].py`)
+### 2. Logistic Regression & Naive Bayes
+- **Concept**: Probabilistic classifiers for categorical target variables.
+- **Workflow**: Advanced solver (`saga`) tuning in Logistic Regression for handling elasticnet penalties. Gaussian Naive Bayes assuming feature independence.
+
+### 3. K-Nearest Neighbors (KNN)
 - **Concept**: Distance-based non-parametric algorithm classifying or predicting values based on $k$ nearest data points.
-- **Workflow**: Feature scaling via `StandardScaler`, 10-fold CV, evaluation via accuracy / R² & MSE, and confusion matrix visualization.
+- **Workflow**: Feature scaling, 10-fold CV, evaluation via accuracy / R² & MSE, and confusion matrix visualization.
 
-### 3. Support Vector Machines (`SVC.PY` & `SVR.PY`)
+### 4. Support Vector Machines (SVC & SVR)
 - **Concept**: Finds optimal hyperplanes to separate classes (SVC) or fit data within an $\epsilon$-margin (SVR).
-- **Workflow**: Feature standardization, 10-fold CV scoring, classification metrics (accuracy, confusion matrix) & regression metrics (MAE, MSE, $R^2$), and residual KDE plots.
+- **Workflow**: Feature standardization, 10-fold CV scoring, robust metrics including classification reports and regression error metrics.
 
 ---
 
