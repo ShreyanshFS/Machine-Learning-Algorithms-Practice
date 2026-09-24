@@ -34,6 +34,10 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 ├── KNN[Regression].py         # K-Nearest Neighbors Regression (California Housing dataset)
 ├── SVC.PY                     # Support Vector Classifier (Breast Cancer dataset)
 ├── SVR.PY                     # Support Vector Regressor (California Housing dataset)
+├── Pre-Prunning_Decision_Tree(Classifier).py # Decision Tree with GridSearchCV
+├── Post-Prunning_Decision_Tree(Classifier).py # Decision Tree with Post-pruning
+├── Decision_Tree(Regression).py # Decision Tree Regressor (California Housing dataset)
+├── o.py                       # Advanced Decision Tree Regressor with Feature Importance & Plotting
 ├── residual_distribution.png  # Sample visualization of model residual distribution
 └── requirements.txt           # Python dependencies list
 ```
@@ -54,6 +58,9 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 | **KNN Regressor** | Regression | California Housing | `KNeighborsRegressor`, `StandardScaler`, 10-fold CV, R² & MSE Evaluation |
 | **Support Vector Classifier (SVC)** | Classification | Breast Cancer Dataset | `SVC`, `StandardScaler`, 10-fold CV, Confusion Matrix & Classification Report |
 | **Support Vector Regressor (SVR)** | Regression | California Housing | `SVR`, `StandardScaler`, 10-fold CV (R² scoring), MAE, MSE, R² Evaluation |
+| **Decision Tree (Pre-Pruning)** | Classification | Iris Dataset | `DecisionTreeClassifier`, `GridSearchCV` (`max_depth`, `criterion`, etc.), Accuracy Score, `plot_tree` |
+| **Decision Tree (Post-Pruning)** | Classification | Iris Dataset | `DecisionTreeClassifier`, manual `max_depth` restriction, Accuracy Score, `plot_tree` |
+| **Decision Tree (Regression)** | Regression | California Housing | `DecisionTreeRegressor`, `cross_val_score` (R²), Feature Importance, MSE/MAE/RMSE |
 
 ---
 
@@ -74,6 +81,10 @@ Welcome to my Machine Learning repository! This repository serves as a hands-on 
 ### 4. Support Vector Machines (SVC & SVR)
 - **Concept**: Finds optimal hyperplanes to separate classes (SVC) or fit data within an $\epsilon$-margin (SVR).
 - **Workflow**: Feature standardization, 10-fold CV scoring, robust metrics including classification reports and regression error metrics.
+
+### 5. Decision Trees
+- **Concept**: Non-parametric supervised learning method used for classification and regression by learning simple decision rules inferred from the data features.
+- **Workflow**: Explores both Pre-pruning via `GridSearchCV` (tuning `max_depth`, `criterion`, `splitter`, `max_features`) to prevent overfitting, and Post-pruning via manual `max_depth` restrictions. Includes Regression models evaluated with MSE, MAE, RMSE, and visualized trees using `sklearn.tree.plot_tree`. Feature importances are also visualized.
 
 ---
 
@@ -117,6 +128,10 @@ python "KNN[CLASSIFICATION].py"
 python "KNN[Regression].py"
 python SVC.PY
 python SVR.PY
+python "Pre-Prunning_Decision_Tree(Classifier).py"
+python "Post-Prunning_Decision_Tree(Classifier).py"
+python "Decision_Tree(Regression).py"
+python o.py
 ```
 
 ---
@@ -130,6 +145,16 @@ import seaborn as sns
 sns.displot(pred - y_test, kind="kde")
 ```
 
+For Decision Trees, the tree structure itself is visualized to interpret the decision rules:
+```python
+from sklearn import tree
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(15,10))
+tree.plot_tree(model, filled=True)
+plt.show()
+```
+
 ---
 
 ## 🗺️ Developer Roadmap & Future Plans
@@ -139,7 +164,8 @@ sns.displot(pred - y_test, kind="kde")
 - [x] Supervised Learning: Naive Bayes Classification (`GaussianNB`)
 - [x] Supervised Learning: K-Nearest Neighbors (KNN Classification & Regression)
 - [x] Supervised Learning: Support Vector Machines (`SVC` & `SVR`)
-- [ ] Decision Trees & Random Forests
+- [x] Supervised Learning: Decision Trees (Pre-pruning, Post-pruning, Regression)
+- [ ] Random Forests
 - [ ] Ensemble Learning (Random Forests, Gradient Boosting, XGBoost)
 - [ ] Clustering Algorithms (K-Means, DBSCAN)
 - [ ] Deep Learning Foundations (Neural Networks with PyTorch/TensorFlow)

@@ -37,4 +37,17 @@ cv.fit(x_train,y_train)
 print("best prms :\n",cv.best_params_)
 
 #prediction
-y_pred=cv.predict(x_test)
+y_pred=cv.predict(x_test) 
+print(y_test,"\n",y_pred)
+
+#Scorin'
+from sklearn.metrics import accuracy_score, classification_report
+scr=accuracy_score(y_pred,y_test)
+print("Acurracy Score",scr)
+print("Classification Report \n",classification_report(y_pred,y_test))
+
+#Plottin'
+from sklearn import tree
+plt.figure(figsize=(15,10))
+tree.plot_tree(cv.best_estimator_, filled=True)
+plt.show()
