@@ -1,3 +1,6 @@
+ x= [
+    [2, 3],
+    [1, 2],
     [8, 7],
     [9, 8]
 ]
@@ -43,12 +46,20 @@ def wt_gini(left_y,right_y):
 
 print(wt_gini(left_y,right_y))
 
-def best_split(x,y):
+import random
+def rndm_f(n_f,max_f):
+    feature=list(range(n_f))
+    return random.sample(feature,max_f)
+
+print(rndm_f(4,2))
+
+def best_split(x,y,max_f):
     b_g=float("inf")
     b_f=None
     b_t=None
+    features= rndm_f(len(x[0]),max_f)
 
-    for feature in range(len(x[0])):
+    for feature in features:
         for row in x:
             threshold = row[feature]
             left_x,left_y,right_x,right_y=split_dataset(x,y,feature,threshold)
@@ -61,7 +72,7 @@ def best_split(x,y):
                 b_t=threshold
     return b_f,b_t,b_g
 
-feature, threshold, score = best_split(x,y)
+feature, threshold, score = best_split(x,y,1)
 print(feature,score,threshold)
 
 def maj_class(y):
@@ -74,15 +85,15 @@ def maj_class(y):
 
 print(maj_class(y))
 
-def build_tree(x,y):
+def build_tree(x,y,max_f):
     if (len(set(y)))==1:
         return {
             "leaf": y[0]
             }
-    feature,threshold,score=best_split(x,y)
+    feature,threshold,score=best_split(x,y,max_f)
     left_x,left_y,right_x,right_y=split_dataset(x,y,feature,threshold)
-    left_stree=build_tree(left_x,left_y)
-    right_stree=build_tree(right_x,right_y)
+    left_stree=build_tree(left_x,left_y,max_f)
+    right_stree=build_tree(right_x,right_y,max_f)
 
     return{
         "feature":feature,
@@ -91,7 +102,7 @@ def build_tree(x,y):
         "right":right_stree
     }
 
-print(build_tree(x,y))
+print(build_tree(x,y,1))
 
 def predict_tree(tree,sample):
     if "leaf" in tree:
@@ -105,10 +116,9 @@ def predict_tree(tree,sample):
     else:
         return predict_tree(tree["right"],sample)
 
-tree=build_tree(x,y)
+tree=build_tree(x,y,1)
 print(predict_tree(tree,[6,5]))
 
-import random
 def b_sample(x,y):
     sample_x=[]
     sample_y=[]
@@ -121,4 +131,34 @@ def b_sample(x,y):
     return sample_x,sample_y
 
 sx,sy=(b_sample(x,y))
-print(sx"\n",sy)
+print(sx,"\n",sy)
+
+def forest(x,y,n_tree,max_f):
+    forest=[]
+
+    for i in range(n_tree):
+        sx,sy=b_sample(x,y)
+        tree=build_tree(sx,sy,max_f)
+        forest.append(tree)
+
+    return forest
+
+forest = forest(x,y,5,1)
+print(forest)
+
+def p_forest(forest, sample):
+    p=[]
+
+    for tree in forest:
+        pr= predict_tree(tree,sample)
+        p.append(pr)
+
+    return p
+
+print(p_forest(forest,[6,5]))
+
+def fp(forest,sample):
+    pred=p_forest(forest,sample)
+    return maj_class(pred)
+
+print (fp(forest,[6,5]))
