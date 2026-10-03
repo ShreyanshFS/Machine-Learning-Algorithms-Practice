@@ -1,185 +1,91 @@
-# 🤖 Machine Learning Implementation & Dev Journey
+# Machine Learning Implementation & Learning Log
 
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=flat&logo=numpy&logoColor=white)
-![Repo Stars](https://img.shields.io/github/stars/ShreyanshFS/Machine-Learning-Algorithms-Practice?style=social)
+This folder is a practical record of learning supervised machine learning with Python. The scripts explore the complete workflow: loading data, separating features and targets, train/test splitting, scaling, fitting, validation, evaluation, and visualization.
 
-Welcome to my Machine Learning repository! This repository serves as a hands-on digital footprint of my developer journey in Machine Learning and Data Science. Here, I write clean, practical Python implementations of foundational ML algorithms, complete with data preprocessing, hyperparameter tuning, model evaluation, and visualization.
+The code is educational and experimental rather than a packaged library. Most examples use datasets bundled with scikit-learn, so no dataset files are required.
 
----
+## Environment
 
-## 📌 Features & Key Learning Objectives
+- Python 3.8+
+- NumPy, pandas, scikit-learn, Matplotlib, and Seaborn
+- Git and `pip`
 
-- **From-Scratch & Scikit-Learn Workflows**: Practical pipelines covering data loading, feature scaling, model fitting, and evaluation.
-- **Cross-Validation & Hyperparameter Tuning**: Using `GridSearchCV` and `cross_val_score` to evaluate and optimize model performance.
-- **Data Visualization**: Analyzing residual distributions (`KDE` plots), feature relationships, and confusion matrices with `Seaborn` and `Matplotlib`.
-- **Standard Preprocessing**: Consistent feature standardization using `StandardScaler` and train-test splits.
+Install dependencies from this directory:
 
----
-
-## 🗂️ Repository Structure
-
-```
-.
-├── Linear_Regression.py       # Ordinary Least Squares (OLS) Linear Regression baseline
-├── Rigde_Regression.py        # Ridge Regression (L2 Regularization) with GridSearchCV
-├── Lasso_Regression.py        # Lasso Regression (L1 Regularization) for feature selection
-├── ElasticNet_Regression.py   # ElasticNet (Combined L1 + L2 Regularization)
-├── Logistic_Regression.py     # Logistic Regression classification (Iris dataset) with GridSearch
-├── Naive_Bay's.py             # Naive Bayes Classifier implementation (GaussianNB on Iris dataset)
-├── KNN[CLASSIFICATION].py     # K-Nearest Neighbors Classification (Iris dataset)
-├── KNN[Regression].py         # K-Nearest Neighbors Regression (California Housing dataset)
-├── SVC.PY                     # Support Vector Classifier (Breast Cancer dataset)
-├── SVR.PY                     # Support Vector Regressor (California Housing dataset)
-├── Pre-Prunning_Decision_Tree(Classifier).py # Decision Tree with GridSearchCV
-├── Post-Prunning_Decision_Tree(Classifier).py # Decision Tree with Post-pruning
-├── Decision_Tree(Regression).py # Decision Tree Regressor (California Housing dataset)
-├── o.py                       # Advanced Decision Tree Regressor with Feature Importance & Plotting
-├── residual_distribution.png  # Sample visualization of model residual distribution
-└── requirements.txt           # Python dependencies list
-```
-
----
-
-## 📊 Summary of Implemented Models
-
-| Algorithm | Model Type | Dataset / Problem | Key Techniques & Metrics |
-| :--- | :--- | :--- | :--- |
-| **Linear Regression** | Regression | California Housing | OLS, `StandardScaler`, `cross_val_score`, R² Evaluation |
-| **Ridge Regression** | Regression | California Housing | L2 Penalty, `GridSearchCV` (`alpha` tuning), Residual Analysis |
-| **Lasso Regression** | Regression | California Housing | L1 Penalty, `GridSearchCV` hyperparameter search |
-| **ElasticNet** | Regression | California Housing | Combined L1/L2 Penalties, `GridSearchCV` parameter grid |
-| **Logistic Regression** | Classification | Iris Dataset | `saga` Solver, L1/L2/ElasticNet penalties, `GridSearchCV` |
-| **Naive Bayes** | Classification | Iris Dataset | `GaussianNB`, `StandardScaler`, `cross_val_score`, Accuracy Score |
-| **KNN Classifier** | Classification | Iris Dataset | `KNeighborsClassifier`, `StandardScaler`, 10-fold CV, Confusion Matrix |
-| **KNN Regressor** | Regression | California Housing | `KNeighborsRegressor`, `StandardScaler`, 10-fold CV, R² & MSE Evaluation |
-| **Support Vector Classifier (SVC)** | Classification | Breast Cancer Dataset | `SVC`, `StandardScaler`, 10-fold CV, Confusion Matrix & Classification Report |
-| **Support Vector Regressor (SVR)** | Regression | California Housing | `SVR`, `StandardScaler`, 10-fold CV (R² scoring), MAE, MSE, R² Evaluation |
-| **Decision Tree (Pre-Pruning)** | Classification | Iris Dataset | `DecisionTreeClassifier`, `GridSearchCV` (`max_depth`, `criterion`, etc.), Accuracy Score, `plot_tree` |
-| **Decision Tree (Post-Pruning)** | Classification | Iris Dataset | `DecisionTreeClassifier`, manual `max_depth` restriction, Accuracy Score, `plot_tree` |
-| **Decision Tree (Regression)** | Regression | California Housing | `DecisionTreeRegressor`, `cross_val_score` (R²), Feature Importance, MSE/MAE/RMSE |
-
----
-
-## 🧠 Model Breakdown Highlights
-
-### 1. Regression Models (Linear, Ridge, Lasso, ElasticNet)
-- **Concept**: Predicting continuous target values using linear relationships and various regularization techniques (L1/L2 penalties) to prevent overfitting.
-- **Workflow**: `StandardScaler`, `GridSearchCV` for tuning `alpha`, evaluation via R² and MSE, and KDE residual distribution plots.
-
-### 2. Logistic Regression & Naive Bayes
-- **Concept**: Probabilistic classifiers for categorical target variables.
-- **Workflow**: Advanced solver (`saga`) tuning in Logistic Regression for handling elasticnet penalties. Gaussian Naive Bayes assuming feature independence.
-
-### 3. K-Nearest Neighbors (KNN)
-- **Concept**: Distance-based non-parametric algorithm classifying or predicting values based on $k$ nearest data points.
-- **Workflow**: Feature scaling, 10-fold CV, evaluation via accuracy / R² & MSE, and confusion matrix visualization.
-
-### 4. Support Vector Machines (SVC & SVR)
-- **Concept**: Finds optimal hyperplanes to separate classes (SVC) or fit data within an $\epsilon$-margin (SVR).
-- **Workflow**: Feature standardization, 10-fold CV scoring, robust metrics including classification reports and regression error metrics.
-
-### 5. Decision Trees
-- **Concept**: Non-parametric supervised learning method used for classification and regression by learning simple decision rules inferred from the data features.
-- **Workflow**: Explores both Pre-pruning via `GridSearchCV` (tuning `max_depth`, `criterion`, `splitter`, `max_features`) to prevent overfitting, and Post-pruning via manual `max_depth` restrictions. Includes Regression models evaluated with MSE, MAE, RMSE, and visualized trees using `sklearn.tree.plot_tree`. Feature importances are also visualized.
-
----
-
-## 🚀 Quick Start & Installation
-
-### 1. Prerequisites
-- **Python 3.8 or higher**
-- **Git**
-- **pip** package manager
-
-### 2. Installation & Environment Setup
-Clone the repository and set up a virtual environment:
-
-```bash
-git clone https://github.com/ShreyanshFS/Machine-Learning-Algorithms-Practice.git
-cd Machine-Learning-Algorithms-Practice
-
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-Install all required libraries using `requirements.txt`:
-```bash
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-### 4. Running an Implementation
-Execute any script directly via python:
-```bash
+Some scikit-learn datasets may be downloaded the first time they are used.
+
+## What is implemented
+
+### Regression
+
+| File | Algorithm | Dataset | Main ideas |
+|---|---|---|---|
+| `Linear_Regression.py` | Linear Regression | California Housing | scaling, cross-validation, residual KDE, R² |
+| `Rigde_Regression.py` | Ridge Regression | California Housing | L2 regularization and alpha search |
+| `Lasso_Regression.py` | Lasso Regression | California Housing | L1 regularization and alpha search |
+| `ElasticNet_Regression.py` | ElasticNet | California Housing | combined L1/L2 regularization |
+| `KNN[Regression].py` | KNN regression | California Housing | scaling, 10-fold CV, R² and MSE |
+| `SVR.PY` | Support Vector Regression | California Housing | scaling, CV, MAE/MSE/R² |
+| `Decision_Tree(Regression).py` | Decision Tree Regressor | California Housing | CV, R²/MSE, tree plot |
+| `Decision_Tree(regresssion).py` | Tuned Decision Tree Regressor | California Housing | `GridSearchCV` and R² |
+| `o.py` | Decision Tree Regressor | California Housing | MAE/MSE/RMSE, residuals, feature importance |
+
+### Classification
+
+| File | Algorithm | Dataset | Main ideas |
+|---|---|---|---|
+| `Logistic_Regression.py` | Logistic Regression | Iris, two classes | L1/L2/ElasticNet search and reports |
+| `Naive_Bay's.py` | Gaussian Naive Bayes | Iris | scaling, CV, accuracy |
+| `KNN[CLASSIFICATION].py` | KNN classification | Iris | scaling, CV, report, confusion matrix |
+| `SVC.PY` | Support Vector Classifier | Breast Cancer | scaling, CV, reports, confusion matrix |
+| `Pre-Prunning_Decision_Tree(Classifier).py` | Decision Tree Classifier | Iris | hyperparameter search as pre-pruning |
+| `Post-Prunning_Decision_Tree(Classifier).py` | Decision Tree Classifier | Iris | depth-limited tree and visualization |
+
+### From-scratch exercise
+
+`Rndm_forest.py` implements a small classification random forest without scikit-learn’s forest estimator. It demonstrates Gini impurity, threshold splitting, weighted impurity, random feature selection, bootstrap sampling, recursive tree construction, prediction, and majority voting.
+
+## Learning progression
+
+The examples reinforce that scaling matters for KNN, SVM, and regularized linear models; cross-validation is more informative than one split alone; `GridSearchCV` can tune model hyperparameters; regression uses R²/MSE/MAE/RMSE while classification uses accuracy, reports, and confusion matrices; and residual/tree plots support model interpretation.
+
+## Running examples
+
+```powershell
 python Linear_Regression.py
 python Logistic_Regression.py
-python "Naive_Bay's.py"
 python "KNN[CLASSIFICATION].py"
-python "KNN[Regression].py"
-python SVC.PY
-python SVR.PY
 python "Pre-Prunning_Decision_Tree(Classifier).py"
-python "Post-Prunning_Decision_Tree(Classifier).py"
-python "Decision_Tree(Regression).py"
 python o.py
+python Rndm_forest.py
 ```
 
----
+Many scripts open Matplotlib or Seaborn windows and wait for them to be closed.
 
-## 📈 Visualizing Residuals & Performance
+## Current cleanup notes
 
-Model performance is evaluated using metrics like **R² score**, **MSE**, and **MAE** for regression, and **Accuracy / Classification Report / Confusion Matrix** for classification. The scripts generate residual distribution plots (`KDE` plots) to assess error distribution:
+This is a learning workspace, so not every file is production-ready:
 
-```python
-import seaborn as sns
-sns.displot(pred - y_test, kind="kde")
-```
+- `linear_regression_manual.py` is unfinished and currently contains invalid Python syntax.
+- `tempCodeRunnerFile.py` is an editor-generated temporary file.
+- `Decision_Tree(Regression).py` accesses `best_estimator_` on a `cross_val_score` result; it should plot the fitted tree or use `GridSearchCV`.
+- Several older scripts contain spelling inconsistencies, duplicate imports, or metric argument ordering that should be standardized later.
+- Filenames retain learning-stage spellings such as `Rigde`, `Prunning`, and `Naive_Bay's`.
 
-For Decision Trees, the tree structure itself is visualized to interpret the decision rules:
-```python
-from sklearn import tree
-import matplotlib.pyplot as plt
+## Next steps
 
-plt.figure(figsize=(15,10))
-tree.plot_tree(model, filled=True)
-plt.show()
-```
+- Finish the manual linear-regression exercise.
+- Refactor repeated preprocessing and evaluation into reusable functions.
+- Use `random_state` consistently and add lightweight tests.
+- Correct known execution issues.
+- Continue with Random Forest, Gradient Boosting, clustering, dimensionality reduction, and neural-network fundamentals.
 
----
+## License
 
-## 🗺️ Developer Roadmap & Future Plans
-
-- [x] Supervised Learning: Linear & Regularized Regressions (Ridge, Lasso, ElasticNet)
-- [x] Supervised Learning: Logistic Regression with hyperparameter tuning
-- [x] Supervised Learning: Naive Bayes Classification (`GaussianNB`)
-- [x] Supervised Learning: K-Nearest Neighbors (KNN Classification & Regression)
-- [x] Supervised Learning: Support Vector Machines (`SVC` & `SVR`)
-- [x] Supervised Learning: Decision Trees (Pre-pruning, Post-pruning, Regression)
-- [ ] Random Forests
-- [ ] Ensemble Learning (Random Forests, Gradient Boosting, XGBoost)
-- [ ] Clustering Algorithms (K-Means, DBSCAN)
-- [ ] Deep Learning Foundations (Neural Networks with PyTorch/TensorFlow)
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this software for educational and personal projects.
-
----
-
-## 👤 Author & Journey
-
-Crafted as a personal log to document code implementations, experimentations, and progress in Machine Learning. 
-
-If you find this repository helpful or want to connect over ML topics, feel free to give it a ⭐️!
+No license file is currently included. Add one before distributing this repository beyond personal learning use.
