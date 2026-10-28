@@ -44,7 +44,7 @@ print('predection\n',pred)
 from sklearn.metrics import r2_score, mean_squared_error
 r2 = r2_score(y_test, pred)
 mse = mean_squared_error(y_test, pred)
-print("R²:", r2)
+print("R²:  ", r2)
 print("MSE:", mse)
 
 #Graph Plotting'
